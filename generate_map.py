@@ -5,7 +5,8 @@ import csv
 import re
 from folium.plugins import FloatImage
 
-url = ('logo.png')
+out_filename = 'index.html'
+legend = 'logo1.png'
 
 versions = {'bootstrap/3.2.0': 'bootstrap/3.7.7',
 icons = {'werkstatt': ['fa', 'wrench'], 'laden': ['fa', 'money'], 'lebensmittel': ['fa', 'shopping-basket'], 'elektronik': ['fa', 'laptop'],
@@ -60,7 +61,8 @@ def add_marker(lat, lon, popup, markertype, col='green'):
 '''Fix bootstrap and font awesome versions'''
 
 
-def fix_versions(htmlfile='map.html'):
+# Fix bootstrap and font awesome versions
+def fix_versions(htmlfile=out_filename):
     for tool in versions.keys():
         replace(htmlfile, tool, versions[tool])
 
@@ -99,9 +101,10 @@ reader = read_csv_file('data.csv')
 parse_csv(reader)
 
 
-'''Add Logo'''
-FloatImage(url, bottom=1, left=1).add_to(m)
+# Add Logo
+FloatImage(legend, bottom=1, left=1).add_to(m)
 
 
-m.save('map.html')
+# Draw Map
+m.save(out_filename)
 fix_versions()
