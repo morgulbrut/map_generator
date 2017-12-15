@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <style> #map_47a4c7de71b740dca616d843babd7371 {
+                position : relative;
+                width : 100.0%;
+                height: 100.0%;
+                left: 0.0%;
+                top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css" />
+    
+                <style>
+                    #float_image_c7097836df58456694c8459375b48dc7 {
+                        position:absolute;
+                        bottom:1%;
+                        left:1%;
+                        }
+                </style>
+            
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_47a4c7de71b740dca616d843babd7371" ></div>
+        
+    
+            <img id="float_image_c7097836df58456694c8459375b48dc7" alt="float_image"
+                 src="logo1.png"
+                 style="z-index: 999999">
+            </img>
+            
+</body>
+<script>    
+    
+
+            
+                var bounds = null;
+            
+
+            var map_47a4c7de71b740dca616d843babd7371 = L.map(
+                                  'map_47a4c7de71b740dca616d843babd7371',
+                                  {center: [47.3686498,8.5391825],
+                                  zoom: 12,
+                                  maxBounds: bounds,
+                                  layers: [],
+                                  worldCopyJump: false,
+                                  crs: L.CRS.EPSG3857
+                                 });
+            
+        
+    
+            var tile_layer_caef661888c94d2fa1ddbdb138de9de8 = L.tileLayer(
+                'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
+                {
+  "attribution": null,
+  "detectRetina": false,
+  "maxZoom": 18,
+  "minZoom": 1,
+  "noWrap": false,
+  "subdomains": "abc"
+}
+                ).addTo(map_47a4c7de71b740dca616d843babd7371);
+        
+    
+            var marker_cluster_9287c83a336f4bd48eb0960e3d64ba0d = L.markerClusterGroup({
+                
+            });
+            map_47a4c7de71b740dca616d843babd7371.addLayer(marker_cluster_9287c83a336f4bd48eb0960e3d64ba0d);
+            
+    
+
+            var marker_8ded2832cf2f496ea7714370df3c3bbe = L.marker(
+                [47.382967,8.539748],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_9287c83a336f4bd48eb0960e3d64ba0d);
+            
+    
+
+                var icon_656a5b18e6f3402cbd06ebe11648bfa1 = L.AwesomeMarkers.icon({
+                    icon: 'wrench',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'fa',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_8ded2832cf2f496ea7714370df3c3bbe.setIcon(icon_656a5b18e6f3402cbd06ebe11648bfa1);
+            
+    
+            var popup_5c6571f8c75648b79a219570081ae977 = L.popup({maxWidth: '300'});
+
+            
+                var html_b50b712b8acb49e29684ab54cbeb6a2f = $('<div id="html_b50b712b8acb49e29684ab54cbeb6a2f" style="width: 100.0%; height: 100.0%;"><a target="_blank" href="www.dynamo.ch/werkbereich"><b>Dynamo</b></a><br/>Diverse Werkstätten: Veschiedenste Maschinen, die man je nach dem mit oder ohne Kurs benutzen kann. Darunter ein gut gewarterter Lasercutter<br/>Wasserwerkstrasse 21, 8006 Zürich  <br/>Mi-Fr: 14.00 - 21.00, Sa: 14.00 - 19.00</div>')[0];
+                popup_5c6571f8c75648b79a219570081ae977.setContent(html_b50b712b8acb49e29684ab54cbeb6a2f);
+            
+
+            marker_8ded2832cf2f496ea7714370df3c3bbe.bindPopup(popup_5c6571f8c75648b79a219570081ae977);
+
+            
+        
+    
+
+            var marker_9f235695f6874cf880986a2ea5bffb92 = L.marker(
+                [47.392977,8.524866],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_9287c83a336f4bd48eb0960e3d64ba0d);
+            
+    
+
+                var icon_ce41af7d25354bd4b2eaf94d1c672377 = L.AwesomeMarkers.icon({
+                    icon: 'laptop',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'fa',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_9f235695f6874cf880986a2ea5bffb92.setIcon(icon_ce41af7d25354bd4b2eaf94d1c672377);
+            
+    
+            var popup_794eaa09d50347bdb506575254628c68 = L.popup({maxWidth: '300'});
+
+            
+                var html_35ced20a653b4598a4d5ebf618b9611d = $('<div id="html_35ced20a653b4598a4d5ebf618b9611d" style="width: 100.0%; height: 100.0%;"><a target="_blank" href="https://www.revamp-it.ch/"><b>revamp-it</b></a><br/>Laden, der alte, wieder zum Laufen gebrachte  Computerhardware verkauft.<br/>Röschibachstr. 24 - 26, 8037 Zürich <br/>Mo-Mi, Fr: 13:00 - 17:00</div>')[0];
+                popup_794eaa09d50347bdb506575254628c68.setContent(html_35ced20a653b4598a4d5ebf618b9611d);
+            
+
+            marker_9f235695f6874cf880986a2ea5bffb92.bindPopup(popup_794eaa09d50347bdb506575254628c68);
+
+            
+        
+    
+
+            var marker_ead1eba31f554d719a3b9e67de2620e3 = L.marker(
+                [47.37788,8.525731],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_9287c83a336f4bd48eb0960e3d64ba0d);
+            
+    
+
+                var icon_817376b24a874ee99624b29949b38751 = L.AwesomeMarkers.icon({
+                    icon: 'microchip',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'fa',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_ead1eba31f554d719a3b9e67de2620e3.setIcon(icon_817376b24a874ee99624b29949b38751);
+            
+    
+            var popup_b281f1c529ab41f3970b687e13f6a1ee = L.popup({maxWidth: '300'});
+
+            
+                var html_53c4b0a29c6749d68ed82217d7787c35 = $('<div id="html_53c4b0a29c6749d68ed82217d7787c35" style="width: 100.0%; height: 100.0%;"><a target="_blank" href="https://www.mechatronicart.ch/mechartlab/"><b>mechartlab</b></a><br/>Hackerspace mit Fokus auf Elektronik. Lötkolben, Messgeräte, Handwerkzeug etc. ist vorhanden.<br/>Hohlstrasse 52, 8004 Zürich<br/>Di: 20:00 - open end</div>')[0];
+                popup_b281f1c529ab41f3970b687e13f6a1ee.setContent(html_53c4b0a29c6749d68ed82217d7787c35);
+            
+
+            marker_ead1eba31f554d719a3b9e67de2620e3.bindPopup(popup_b281f1c529ab41f3970b687e13f6a1ee);
+
+            
+        
+    
+
+            var marker_7eebbfe1edc44ea5b1ffc522e4feaf24 = L.marker(
+                [47.494711,8.71693],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_9287c83a336f4bd48eb0960e3d64ba0d);
+            
+    
+
+                var icon_ded637a5bc34419785919776fd6c5638 = L.AwesomeMarkers.icon({
+                    icon: 'wrench',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'fa',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_7eebbfe1edc44ea5b1ffc522e4feaf24.setIcon(icon_ded637a5bc34419785919776fd6c5638);
+            
+    
+            var popup_2c90eebc8cee44a0853d3f72a978d467 = L.popup({maxWidth: '300'});
+
+            
+                var html_15041fb6d16849bab3210547a86afce1 = $('<div id="html_15041fb6d16849bab3210547a86afce1" style="width: 100.0%; height: 100.0%;"><a target="_blank" href="http://www.fablabwinti.ch"><b>FabLab Winti</b></a><br/>Ein FabLab ist eine offene, demokratische Werkstatt mit dem Ziel, Privatpersonen den Zugang zu Produktionsmittelnund modernen industriellen Produktionsverfahren für Einzelstücke zu ermöglichen. -wikipedia-<br/>Technoparkstrasse 2, 8406 Winterthur<br/>Di-Do: 18:00-20:00, Sa: 13:00 - 17:00 </div>')[0];
+                popup_2c90eebc8cee44a0853d3f72a978d467.setContent(html_15041fb6d16849bab3210547a86afce1);
+            
+
+            marker_7eebbfe1edc44ea5b1ffc522e4feaf24.bindPopup(popup_2c90eebc8cee44a0853d3f72a978d467);
+
+            
+        
+    
+
+            var marker_45effe9cec5f46769256de477d109454 = L.marker(
+                [47.01386,8.305948],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_9287c83a336f4bd48eb0960e3d64ba0d);
+            
+    
+
+                var icon_615e930a43a24369ae6f5bf56aace346 = L.AwesomeMarkers.icon({
+                    icon: 'wrench',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'fa',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_45effe9cec5f46769256de477d109454.setIcon(icon_615e930a43a24369ae6f5bf56aace346);
+            
+    
+            var popup_f036a875f0ea4ed6a02e0892612bf93a = L.popup({maxWidth: '300'});
+
+            
+                var html_d9c6d8bd1ef246d78400ecb4dfbf4071 = $('<div id="html_d9c6d8bd1ef246d78400ecb4dfbf4071" style="width: 100.0%; height: 100.0%;"><a target="_blank" href="http://fablab-luzern.ch/"><b>FabLab Luzern</b></a><br/>Ein FabLab ist eine offene, demokratische Werkstatt mit dem Ziel, Privatpersonen den Zugang zu Produktionsmittelnund modernen industriellen Produktionsverfahren für Einzelstücke zu ermöglichen. -wikipedia-<br/>Technikumstrasse 21, 6048 Horw<br/>Di-Do: 10:00-21:00</div>')[0];
+                popup_f036a875f0ea4ed6a02e0892612bf93a.setContent(html_d9c6d8bd1ef246d78400ecb4dfbf4071);
+            
+
+            marker_45effe9cec5f46769256de477d109454.bindPopup(popup_f036a875f0ea4ed6a02e0892612bf93a);
+
+            
+        
+    
+
+            var marker_33477de5661b4dfb97b79f9740c2d9f0 = L.marker(
+                [47.383947,8.510061],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_9287c83a336f4bd48eb0960e3d64ba0d);
+            
+    
+
+                var icon_b9ce08504c424f29accb99e4e6d51dd3 = L.AwesomeMarkers.icon({
+                    icon: 'wrench',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'fa',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_33477de5661b4dfb97b79f9740c2d9f0.setIcon(icon_b9ce08504c424f29accb99e4e6d51dd3);
+            
+    
+            var popup_8e4a718106b8429bb57a9ad5a05ae432 = L.popup({maxWidth: '300'});
+
+            
+                var html_4b08e3bbb2ec4e83bfd09d61d420b7dc = $('<div id="html_4b08e3bbb2ec4e83bfd09d61d420b7dc" style="width: 100.0%; height: 100.0%;"><a target="_blank" href="http://zurich.fablab.ch/"><b>FabLab Zürich</b></a><br/>Ein FabLab ist eine offene, demokratische Werkstatt mit dem Ziel, Privatpersonen den Zugang zu Produktionsmittelnund modernen industriellen Produktionsverfahren für Einzelstücke zu ermöglichen. -wikipedia-<br/>Zimmerlistrasse 6 8004 Zürich<br/></div>')[0];
+                popup_8e4a718106b8429bb57a9ad5a05ae432.setContent(html_4b08e3bbb2ec4e83bfd09d61d420b7dc);
+            
+
+            marker_33477de5661b4dfb97b79f9740c2d9f0.bindPopup(popup_8e4a718106b8429bb57a9ad5a05ae432);
+
+            
+        
+</script>
