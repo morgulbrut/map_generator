@@ -2,8 +2,10 @@
 # coding: utf-8
 import folium
 import csv
+from folium.plugins import FloatImage
 
 icons = {'werkstatt':'wrench', 'laden':'credit-card'}
+url = ('logo.png')
 
 
 '''CSV handling'''
@@ -53,5 +55,7 @@ parse_csv(reader)
 folium.Icon(
     icon=folium.Icon(icon='cloud')
 ).add_to(m)
+'''Add Logo'''
+FloatImage(url, bottom=1, left=1).add_to(m)
 
 m.save('map.html')
