@@ -3,7 +3,11 @@
 import folium
 import csv
 import re
+
 from folium.plugins import FloatImage
+from folium.plugins import MarkerCluster
+
+from branca.element import *
 
 out_filename = 'index.html'
 legend = 'logo1.png'
@@ -55,10 +59,9 @@ def add_marker(lat, lon, popup, markertype, col='green'):
     folium.Marker(
         location=[float(lat), float(lon)],
         popup=popup,
-        icon=folium.Icon(icon=markertype[1], color=col, prefix=markertype[0])
-    ).add_to(m)
-
-'''Fix bootstrap and font awesome versions'''
+        icon=folium.Icon(icon=markertype[1], color=col, prefix=markertype[0],
+        )
+    ).add_to(marker_cluster)
 
 
 # Fix bootstrap and font awesome versions
@@ -97,6 +100,7 @@ m = folium.Map(location=map_center,
                tiles='Stamen Toner',
                )
 
+marker_cluster = MarkerCluster().add_to(m)
 reader = read_csv_file('data.csv')
 parse_csv(reader)
 
