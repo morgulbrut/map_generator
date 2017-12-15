@@ -11,6 +11,7 @@ icons = {'werkstatt': ['fa', 'wrench'], 'laden': ['fa', 'money'], 'lebensmittel'
 versions = {'bootstrap/3.2.0': 'bootstrap/3.7.7',
             'font-awesome/4.6.3': 'font-awesome/4.7.0'}
 
+map_center = [47.3686498, 8.5391825]
 '''CSV handling'''
 def read_csv_file(file):
     try:
@@ -27,26 +28,33 @@ def parse_csv(reader):
     markers = []
     for row in reader:
         mrk = parse_row(row)
-        add_marker(mrk[0],mrk[1],mrk[2],mrk[3])
+        add_marker(mrk[0], mrk[1], mrk[2], mrk[3])
+
 
 def parse_row(row):
     lat = row[2]
     lon = row[3]
-    popup = '<a target="_blank" href="{}"><b>{}</b></a><br/>{}<br/>{}'.format(row[4],row[0],row[5],row[6])
-    markertype = icons[row[7].lower()]
-    return (lat,lon,popup,markertype)
-        
+    popup = '<a target="_blank" href="{}"><b>{}</b></a><br/>{}<br/>{}<br/>{}'.format(
+        row[4], row[0], row[5], row[1], row[6])
+    try:
+        markertype = icons[row[7].lower()]
+    except KeyError:
+        markertype = ['fa', 'asterisk']
+    return (lat, lon, popup, markertype)
+
 '''Add markers'''
-def add_marker(lat,lon,popup,markertype,col='black'):
+
+
+def add_marker(lat, lon, popup, markertype, col='green'):
     folium.Marker(
-        location=[float(lat),float(lon)],
+        location=[float(lat), float(lon)],
         popup=popup,
-        icon=folium.Icon(icon=markertype,color=col)
+        icon=folium.Icon(icon=markertype[1], color=col, prefix=markertype[0])
     ).add_to(m)
 
 '''Initialize map'''
-m = folium.Map(location=[47.3686498, 8.5391825],
-               zoom_start=11,
+m = folium.Map(location=map_center,
+               zoom_start=12,
                tiles='Stamen Toner',
 )
 
