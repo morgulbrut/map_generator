@@ -8,9 +8,9 @@ from folium.plugins import FloatImage
 out_filename = 'index.html'
 legend = 'logo1.png'
 
-versions = {'bootstrap/3.2.0': 'bootstrap/3.7.7',
 icons = {'werkstatt': ['fa', 'wrench'], 'laden': ['fa', 'money'], 'lebensmittel': ['fa', 'shopping-basket'], 'elektronik': ['fa', 'laptop'],
          'hackerspace': ['fa', 'microchip'], 'holzwerkstatt': ['fa', 'tree'], 'bastelmaterial': ['fa', 'magnet'], 'metallwerkstatt': ['fa', 'cog']}
+versions = {'bootstrap/3.2.0': 'bootstrap/4.0.0-beta.2',
             'font-awesome/4.6.3': 'font-awesome/4.7.0'}
 
 map_center = [47.3686498, 8.5391825]
