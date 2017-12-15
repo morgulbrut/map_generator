@@ -2,6 +2,7 @@
 # coding: utf-8
 import folium
 import csv
+import re
 from folium.plugins import FloatImage
 
 url = ('logo.png')
@@ -52,6 +53,36 @@ def add_marker(lat, lon, popup, markertype, col='green'):
         icon=folium.Icon(icon=markertype[1], color=col, prefix=markertype[0])
     ).add_to(m)
 
+'''Fix bootstrap and font awesome versions'''
+
+
+def fix_versions(htmlfile='map.html'):
+    for tool in versions.keys():
+        replace(htmlfile, tool, versions[tool])
+
+
+def add_header():
+    pass
+
+
+''' Replace stuff in files'''
+
+
+def replace(file, pattern, subst):
+    # Read contents from file as a single string
+    file_handle = open(file, 'r')
+    file_string = file_handle.read()
+    file_handle.close()
+
+    # Use RE package to allow for replacement (also allowing for (multiline)
+    # REGEX)
+    file_string = (re.sub(pattern, subst, file_string))
+
+    # Write contents to file.
+    # Using mode 'w' truncates the file.
+    file_handle = open(file, 'w')
+    file_handle.write(file_string)
+    file_handle.close()
 '''Initialize map'''
 m = folium.Map(location=map_center,
                zoom_start=12,
@@ -70,3 +101,4 @@ folium.Icon(
 FloatImage(url, bottom=1, left=1).add_to(m)
 
 m.save('map.html')
+fix_versions()
