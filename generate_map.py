@@ -4,9 +4,12 @@ import folium
 import csv
 from folium.plugins import FloatImage
 
-icons = {'werkstatt':'wrench', 'laden':'credit-card'}
 url = ('logo.png')
 
+icons = {'werkstatt': ['fa', 'wrench'], 'laden': ['fa', 'money'], 'lebensmittel': [
+    'fa', 'shopping-bag'], 'elektronik': ['fa', 'laptop'], 'hackerspace': ['fa', 'microchip']}
+versions = {'bootstrap/3.2.0': 'bootstrap/3.7.7',
+            'font-awesome/4.6.3': 'font-awesome/4.7.0'}
 
 '''CSV handling'''
 def read_csv_file(file):
