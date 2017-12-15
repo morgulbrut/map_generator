@@ -19,9 +19,8 @@ versions = {'bootstrap/3.2.0': 'bootstrap/4.0.0-beta.2',
 
 map_center = [47.3686498, 8.5391825]
 
-'''CSV handling'''
 
-
+# CSV handling
 def read_csv_file(file):
     try:
         f = open(file, 'rt')
@@ -52,9 +51,8 @@ def parse_row(row):
         markertype = ['fa', 'asterisk']
     return (lat, lon, popup, markertype)
 
-'''Add markers'''
 
-
+# Add markers
 def add_marker(lat, lon, popup, markertype, col='green'):
     folium.Marker(
         location=[float(lat), float(lon)],
@@ -69,14 +67,14 @@ def fix_versions(htmlfile=out_filename):
     for tool in versions.keys():
         replace(htmlfile, tool, versions[tool])
 
+# Add headers
+
 
 def add_header():
     pass
 
 
-''' Replace stuff in files'''
-
-
+# Replace stuff in files
 def replace(file, pattern, subst):
     # Read contents from file as a single string
     file_handle = open(file, 'r')
@@ -94,13 +92,15 @@ def replace(file, pattern, subst):
     file_handle.close()
 
 
-'''Initialize map'''
+# Initialize map
 m = folium.Map(location=map_center,
                zoom_start=12,
                tiles='Stamen Toner',
                )
 
 marker_cluster = MarkerCluster().add_to(m)
+
+
 reader = read_csv_file('data.csv')
 parse_csv(reader)
 
