@@ -13,7 +13,10 @@ versions = {'bootstrap/3.2.0': 'bootstrap/3.7.7',
             'font-awesome/4.6.3': 'font-awesome/4.7.0'}
 
 map_center = [47.3686498, 8.5391825]
+
 '''CSV handling'''
+
+
 def read_csv_file(file):
     try:
         f = open(file, 'rt')
@@ -22,6 +25,7 @@ def read_csv_file(file):
         print(file + ': File not found')
     except IndexError:
         print(file + ': File not formated well')
+
 
 def parse_csv(reader):
     global header
@@ -83,22 +87,21 @@ def replace(file, pattern, subst):
     file_handle = open(file, 'w')
     file_handle.write(file_string)
     file_handle.close()
+
+
 '''Initialize map'''
 m = folium.Map(location=map_center,
                zoom_start=12,
                tiles='Stamen Toner',
-)
+               )
 
 reader = read_csv_file('data.csv')
 parse_csv(reader)
 
 
-'''Add icon'''
-folium.Icon(
-    icon=folium.Icon(icon='cloud')
-).add_to(m)
 '''Add Logo'''
 FloatImage(url, bottom=1, left=1).add_to(m)
+
 
 m.save('map.html')
 fix_versions()
