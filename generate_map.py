@@ -13,7 +13,7 @@ out_filename = 'index.html'
 legend = 'logo1.png'
 
 icons = {'werkstatt': ['fa', 'wrench'], 'laden': ['fa', 'money'], 'lebensmittel': ['fa', 'shopping-basket'], 'elektronik': ['fa', 'laptop'],
-         'hackerspace': ['fa', 'microchip'], 'holzwerkstatt': ['fa', 'tree'], 'bastelmaterial': ['fa', 'magnet'], 'metallwerkstatt': ['fa', 'cog']}
+         'hackerspace': ['fa', 'microchip'], 'holzwerkstatt': ['fa', 'tree'], 'bastelmaterial': ['fa', 'magnet'], 'metallwerkstatt': ['fa', 'cog'],'event':['fa','calendar'     ]}
 versions = {'bootstrap/3.2.0': 'bootstrap/4.0.0-beta.2',
             'font-awesome/4.6.3': 'font-awesome/4.7.0'}
 
