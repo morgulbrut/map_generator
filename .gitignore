@@ -1,8 +1,7 @@
 
-client_secret\.json
-
-fablabs\.csv
-
-settings\.json
-
+client_secret.json
+settings.json
+*.csv
+*.html
+*.ipynb
 __pycache__/
