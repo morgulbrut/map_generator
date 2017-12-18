@@ -1,0 +1,23 @@
+{
+  "output_filename" : "index.html",
+  "legend_img" : "legend.png",
+  "map":
+  {
+    "style" : "Stamen Toner",
+    "zoom" : 12,
+    "center" : [latitude, longitude]
+  },
+  "ftp":
+  {
+    "user" : "ftp username",
+    "server" : "ftp server",
+    "passwd" : "ftp Passwd"
+  },
+  "googleapi":
+  {
+    "scopes" : " stuff given by google sheets API ",
+    "client_secret_file" : "client_secret.json",
+    "application_name" : " i just ran the python quickstart guide",
+    "file_id" : "file id"
+  }
+}
