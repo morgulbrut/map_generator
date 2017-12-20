@@ -36,6 +36,83 @@ ICONS = {'werkstatt': ['fa', 'wrench'], 'laden': ['fa', 'money'], 'lebensmittel'
 VERSIONS = {'bootstrap/3.2.0': 'bootstrap/4.0.0-beta.2',
             'font-awesome/4.6.3': 'font-awesome/4.7.0'}
 
+
+HTML_INSERT_1 = '''
+  <style>body {padding-top: 65px;}</style>
+  </head>
+  '''
+HTML_INSERT_2 = '''
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Machen statt kaufen</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <button type="button" class="btn btn-sm align-middle btn-outline-secondary"  data-toggle="modal" data-target="#legendModal">Legende</button>
+            </li>
+            <li class="nav-item">
+            <button type="button" class="btn btn-sm align-middle btn-outline-secondary"  data-toggle="modal" data-target="#aboutModal">Über</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Trigger the modal with a button -->
+
+<!-- Modal -->
+<div id="legendModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Legende</h4>
+      </div>
+      <div class="modal-body">
+
+        LEGEND_TEXT
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="aboutModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Über</h4>
+      </div>
+      <div class="modal-body">
+        <p>Wir, die Greenpeace Regionalgruppe Zürich, haben beschlossen eine Karte zu machen, mit Orten und Anlässen an denen Zeug repariert oder selber gebaut werden kann, Lebensmittel ohne Verpackung verkauft werden und so weiter. </p>
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+'''
+
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/sheets.googleapis.com-python-quickstart.
 # Do
@@ -119,16 +196,23 @@ def add_marker(lat, lon, popup, markertype, col='green'):
         pass
 
 # Fix bootstrap and font awesome versions
-def fix_versions(htmlfile=OUTPUT_FILE  ):
+def fix_versions(htmlfile=OUTPUT_FILE):
+    print('Fixing versions')
     for tool in VERSIONS.keys():
         replace(htmlfile, tool, VERSIONS[tool])
 
 # Add headers
+def append_to_template(htmlfile=OUTPUT_FILE):
+    print('Adding navbar and stuff')
+    replace(htmlfile,'</head>',HTML_INSERT_1)
+    replace(htmlfile, '<body>',HTML_INSERT_2)
 
-
-def add_header():
-    pass
-
+def generate_legend(htmlfile=OUTPUT_FILE):
+    print('Generating legend')
+    legend = ''
+    for icon in ICONS:
+        legend += '<p><i class="fa fa-{}" aria-hidden="true"></i> {}</p>\n'.format(ICONS[icon][1],icon.capitalize())
+    replace(htmlfile,'LEGEND_TEXT',legend)        
 
 # Replace stuff in files
 def replace(file, pattern, subst):
@@ -170,7 +254,9 @@ def main():
     global marker_cluster
 
     credentials = get_credentials()
+    print('Checking google API credentials')
     http = credentials.authorize(httplib2.Http())
+    print('Getting data from sheets')
     discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?'
                     'version=v4')
     service = discovery.build('sheets', 'v4', http=http,
@@ -194,25 +280,39 @@ def main():
         print('No data found.')
     else:
         for row in values:
-            coords = geolocator.geocode(row[1])
             popup = '<a target="_blank" href="{}"><b>{}</b></a><br/>{}<br/>{}<br/>{}'.format(
                 row[4], row[0], row[5], row[1], row[6])
             try:
                 markertype = ICONS[row[7].lower()]
             except KeyError:
                 markertype = ['fa', 'asterisk']
-            print('Adding marker for {} at {}, {}'.format(row[0],coords.latitude, coords.longitude))
-            add_marker(coords.latitude, coords.longitude, popup, markertype)
+
+            print('Geocoding {}'.format(row[0]))
+            try:
+                coords = geolocator.geocode(row[1])
+                print('Adding marker for {} at {}, {}'.format(row[0],coords.latitude, coords.longitude))
+                add_marker(coords.latitude, coords.longitude, popup, markertype)
+            except Exception as e:
+                print('Geocoding error: {}'.format(e))
+                print('Adding marker for {} at {}, {} '.format(row[0],row[2], row[3]))
+                add_marker(row[2], row[3], popup, markertype)
+
+            
+      
+
             
 
     # Add Logo
-    FloatImage(LEGEND_IMG, bottom=1, left=1).add_to(m)
+    # SFloatImage(LEGEND_IMG, bottom=1, left=1).add_to(m)
 
     # Draw Map
     m.save(OUTPUT_FILE )
+    
     fix_versions()
+    append_to_template()
+    generate_legend()
 
-    ftp_upload(OUTPUT_FILE ,FTP_SERVER,'www',FTP_USER,FTP_PASSWD)
+    # ftp_upload(OUTPUT_FILE ,FTP_SERVER,'www',FTP_USER,FTP_PASSWD)
 
 
 if __name__ == '__main__':
