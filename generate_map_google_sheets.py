@@ -312,7 +312,7 @@ def main():
     append_to_template()
     generate_legend()
 
-    # ftp_upload(OUTPUT_FILE ,FTP_SERVER,'www',FTP_USER,FTP_PASSWD)
+    ftp_upload(OUTPUT_FILE ,FTP_SERVER,'www',FTP_USER,FTP_PASSWD)
 
 
 if __name__ == '__main__':
