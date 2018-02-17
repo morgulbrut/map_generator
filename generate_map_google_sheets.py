@@ -288,8 +288,8 @@ def main():
         print('No data found.')
     else:
         for row in values:
-            popup = '<a target="_blank" href="{}"><b>{}</b></a><br/>{}<br/>{}<br/>{}'.format(
-                row[4], row[0], row[5], row[1], row[6])
+            popup = '<a target=\"_blank\" href=\"{}\"><b>{}</b></a><br/>{}<br/>{}<br/>{}'.format(
+                row[4], row[0].replace("'","&#039;"), row[5].replace("'","&#039;"), row[1].replace("'","&#039;"), row[6].replace("'","&#039;"))
             try:
                 markertype = ICONS[row[7].lower()]
             except KeyError:
