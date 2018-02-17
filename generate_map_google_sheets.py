@@ -36,9 +36,9 @@ MAP_STYLE = ''
 MAP_ZOOM = 10
 MAP_CENTER = [0.0,0.0]
 
-
-ICONS = {'werkstatt': ['fa', 'wrench'], 'laden': ['fa', 'money'], 'lebensmittel': ['fa', 'shopping-basket'], 'elektronik': ['fa', 'laptop'],
-         'hackerspace': ['fa', 'microchip'], 'holzwerkstatt': ['fa', 'tree'], 'bastelmaterial': ['fa', 'magnet'], 'metallwerkstatt': ['fa', 'cog'],'event':['fa','calendar'],'velowerkstatt': ['fa','bicycle']}
+ICONS = {}
+# ICONS = {'werkstatt': ['fa', 'wrench'], 'laden': ['fa', 'money'], 'lebensmittel': ['fa', 'shopping-basket'], 'elektronik': ['fa', 'laptop'],
+#          'hackerspace': ['fa', 'microchip'], 'holzwerkstatt': ['fa', 'tree'], 'bastelmaterial': ['fa', 'magnet'], 'metallwerkstatt': ['fa', 'cog'],'event':['fa','calendar'],'velowerkstatt': ['fa','bicycle']}
 VERSIONS = {'bootstrap/3.2.0': 'bootstrap/4.0.0-beta.2',
             'font-awesome/4.6.3': 'font-awesome/4.7.0'}
 
@@ -136,7 +136,7 @@ FTP_PASSWD = 'password'
 def read_settings():
     global MAP_CENTER, MAP_ZOOM, MAP_STYLE
     global FTP_SERVER, FTP_USER, FTP_PASSWD
-    global OUTPUT_FILE, LEGEND_IMG
+    global OUTPUT_FILE, LEGEND_IMG, ICONS
     global SCOPES, CLIENT_SECRET_FILE, APPLICATION_NAME, FILE_ID
 
     try:
@@ -158,6 +158,7 @@ def read_settings():
     CLIENT_SECRET_FILE = data['googleapi']['client_secret_file']
     APPLICATION_NAME = data['googleapi']['application_name']
     FILE_ID = data['googleapi']['file_id']
+    ICONS = data['markers']
 
 
 def get_credentials():
