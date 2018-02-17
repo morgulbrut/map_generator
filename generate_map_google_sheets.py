@@ -13,6 +13,12 @@ from oauth2client import client
 from oauth2client import tools
 from oauth2client.file import Storage
 
+try:
+    import argparse
+    flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
+except ImportError:
+    flags = None
+
 # folium imports
 import folium
 from folium.plugins import FloatImage
@@ -252,9 +258,10 @@ def main():
     read_settings()
 
     global marker_cluster
-
-    credentials = get_credentials()
+    
     print('Checking google API credentials')
+    credentials = get_credentials()
+    
     http = credentials.authorize(httplib2.Http())
     print('Getting data from sheets')
     discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?'
