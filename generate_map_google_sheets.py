@@ -37,8 +37,6 @@ MAP_ZOOM = 10
 MAP_CENTER = [0.0,0.0]
 
 ICONS = {}
-# ICONS = {'werkstatt': ['fa', 'wrench'], 'laden': ['fa', 'money'], 'lebensmittel': ['fa', 'shopping-basket'], 'elektronik': ['fa', 'laptop'],
-#          'hackerspace': ['fa', 'microchip'], 'holzwerkstatt': ['fa', 'tree'], 'bastelmaterial': ['fa', 'magnet'], 'metallwerkstatt': ['fa', 'cog'],'event':['fa','calendar'],'velowerkstatt': ['fa','bicycle']}
 VERSIONS = {'bootstrap/3.2.0': 'bootstrap/4.0.0-beta.2',
             'font-awesome/4.6.3': 'font-awesome/4.7.0'}
 
